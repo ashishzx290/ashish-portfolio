@@ -1,1 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Ashish Vishwakarma | Web Developer</title>
+
+  <meta name="description"
+    content="Ashish Vishwakarma - Web developer creating modern, responsive and affordable websites.">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #080a0f;
+      --card: #10131a;
+      --border: #242936;
+      --text: #f5f7fb;
+      --muted: #9299a8;
+      --accent: #7c5cff;
+      --accent2: #4f8cff;
+    }
+
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* subtle background */
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: rgba(124, 92, 255, 0.08);
+      filter: blur(120px);
+      border-radius: 50%;
+      top: -200px;
+      right: -150px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 10, 15, 0.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #b7bdc9;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .nav-btn {
+      padding: 10px 17px;
+      border-radius: 8px;
+      background: white;
+      color: #090b10 !important;
+      font-weight: 700;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 720px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .small-title {
+      color: #8f79ff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 7vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: transparent;
+      -webkit-text-stroke: 1px #777;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      max-width: 570px;
+      font-size: 17px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 21px;
+      border-radius: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: 0.25s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #080a0f;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: white;
+      background: #0e1117;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* 3D CARD */
+
+    .hero-visual {
+      perspective: 1000px;
+    }
+
+    .developer-card {
+      position: relative;
+      height: 430px;
+      border: 1px solid #292f3c;
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, #151923, #0b0d13);
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+      transform: rotateY(-7deg) rotateX(4deg);
+      transition: 0.5s;
+      overflow: hidden;
+    }
+
+    .developer-card:hover {
+      transform: rotateY(0) rotateX(0) translateY(-8px);
+    }
+
+    .card-top {
+      height: 45px;
+      border-bottom: 1px solid #252a35;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #444;
+    }
+
+    .code {
+      padding: 35px 30px;
+      font-family: monospace;
+      color: #9ca6b8;
+      font-size: 14px;
+    }
+
+    .code .purple {
+      color: #a78bfa;
+    }
+
+    .code .blue {
+      color: #60a5fa;
+    }
+
+    .code .green {
+      color: #86efac;
+    }
+
+    .floating {
+      position: absolute;
+      padding: 12px 15px;
+      border: 1px solid #303746;
+      border-radius: 12px;
+      background: rgba(17,20,28,0.92);
+      backdrop-filter: blur(12px);
+      font-size: 13px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    }
+
+    .float-one {
+      right: 22px;
+      top: 95px;
+    }
+
+    .float-two {
+      left: 22px;
+      bottom: 35px;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-head {
+      margin-bottom: 45px;
+    }
+
+    .section-head h2 {
+      font-size: 42px;
+      letter-spacing: -2px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-box {
+      height: 300px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(145deg, #151923, #0c0f15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-box::after {
+      content: "</>";
+      font-size: 120px;
+      font-weight: 800;
+      color: rgba(124,92,255,0.12);
+    }
+
+    .about-text h3 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(124,92,255,0.08);
+      border-radius: 50%;
+      filter: blur(35px);
+      right: -50px;
+      top: -50px;
+    }
+
+    .service:hover {
+      transform: translateY(-7px);
+      border-color: #454c5c;
+    }
+
+    .service-icon {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 11px;
+      background: #191d28;
+      border: 1px solid #2a3040;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .service h3 {
+      margin-bottom: 9px;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      min-height: 260px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #10131a;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-6px);
+      border-color: #414858;
+    }
+
+    .project-number {
+      color: #6d7482;
+      font-size: 13px;
+      margin-bottom: 60px;
+    }
+
+    .project h3 {
+      font-size: 25px;
+      margin-bottom: 8px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 500px;
+    }
+
+    .project-tag {
+      position: absolute;
+      right: 25px;
+      top: 25px;
+      font-size: 12px;
+      color: #a99cff;
+      background: #19172a;
+      border: 1px solid #302c4d;
+      padding: 6px 10px;
+      border-radius: 20px;
+    }
+
+    /* PRICING */
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .price-card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 17px;
+    }
+
+    .price-card.featured {
+      border-color: #6652d9;
+      box-shadow: 0 20px 60px rgba(80,60,180,0.12);
+    }
+
+    .price-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 34px;
+      font-weight: 800;
+      margin: 18px 0;
+    }
+
+    .price small {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .price-card ul {
+      list-style: none;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .price-card li {
+      margin: 10px 0;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      padding: 70px 40px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(124,92,255,0.13), transparent 50%),
+        #10131a;
+    }
+
+    .contact-box h2 {
+      font-size: 45px;
+      letter-spacing: -2px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin: 12px auto 28px;
+      max-width: 550px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: #737a89;
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* MOBILE */
+
+    @media(max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 90px 0 60px;
+      }
+
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .developer-card {
+        transform: none;
+      }
+
+      .services-grid,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head h2 {
+        font-size: 34px;
+      }
+
+      .contact-box h2 {
+        font-size: 34px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+
+      <a href="#" class="logo">
+        Ashish<span>.</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+
+        <a class="nav-btn"
+           href="https://wa.me/919203570458?text=Hi%20Ashish%2C%20I%20need%20a%20website."
+           target="_blank">
+          Hire Me
+        </a>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container hero-grid">
+
+      <div>
+
+        <div class="small-title">
+          Web Developer
+        </div>
+
+        <h1>
+          Ashish<br>
+          <span>Vishwakarma</span>
+        </h1>
+
+        <p class="hero-description">
+          I build clean, responsive and modern websites
+          for businesses, creators and personal projects.
+          Simple design. Fast performance. Real results.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a class="btn btn-primary"
+             href="https://wa.me/919203570458?text=Hi%20Ashish%2C%20I%20want%20to%20discuss%20a%20website."
+             target="_blank">
+            Let's Work Together →
+          </a>
+
+          <a class="btn btn-secondary" href="#projects">
+            View My Work
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="developer-card">
+
+          <div class="card-top">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+
+          <div class="code">
+
+            <div>
+              <span class="purple">const</span>
+              developer = {
+            </div>
+
+            <br>
+
+            <div>
+              &nbsp;&nbsp;name:
+              <span class="green">"Ashish Vishwakarma"</span>,
+            </div>
+
+            <div>
+              &nbsp;&nbsp;role:
+              <span class="green">"Web Developer"</span>,
+            </div>
+
+            <div>
+              &nbsp;&nbsp;skills: [
+            </div>
+
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">"HTML"</span>,
+            </div>
+
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">"CSS"</span>,
+            </div>
+
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">"JavaScript"</span>,
+            </div>
+
+            <div>
+              &nbsp;&nbsp;&nbsp;&nbsp;<span class="green">"Firebase"</span>
+            </div>
+
+            <div>
+              &nbsp;&nbsp;]
+            </div>
+
+            <br>
+
+            <div>};</div>
+
+            <br>
+
+            <div>
+              <span class="blue">build</span>(your_idea);
+            </div>
+
+          </div>
+
+          <div class="floating float-one">
+            ⚡ Fast & Responsive
+          </div>
+
+          <div class="floating float-two">
+            ◈ Clean UI
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="container about-grid">
+
+      <div class="about-box"></div>
+
+      <div class="about-text">
+
+        <div class="small-title">
+          About Me
+        </div>
+
+        <h3>
+          Building websites that feel
+          <span style="color:#8f79ff;">simple & professional.</span>
+        </h3>
+
+        <p>
+          I'm Ashish Vishwakarma, a web developer interested
+          in creating modern websites and web-based projects.
+        </p>
+
+        <p>
+          I focus on responsive layouts, clean interfaces and
+          practical features that work well on both mobile
+          and desktop devices.
+        </p>
+
+        <p>
+          Whether you need a simple landing page or a complete
+          business website, I can help turn your idea into a
+          working website.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+
+  <section id="services">
+
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small-title">Services</div>
+        <h2>What I can do for you.</h2>
+        <p>Practical web solutions without unnecessary complexity.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service">
+
+          <div class="service-icon">◈</div>
+
+          <h3>Website Development</h3>
+
+          <p>
+            Modern websites for businesses, creators,
+            personal brands and projects.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">▣</div>
+
+          <h3>Responsive Design</h3>
+
+          <p>
+            Websites designed to work smoothly on
+            phones, tablets and computers.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">⌁</div>
+
+          <h3>Landing Pages</h3>
+
+          <p>
+            Focused landing pages for products,
+            promotions and online services.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">⚡</div>
+
+          <h3>Website Optimization</h3>
+
+          <p>
+            Improve layout, loading experience and
+            mobile usability of an existing website.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">▱</div>
+
+          <h3>Website to APK</h3>
+
+          <p>
+            Turn an existing web project into a
+            simple Android application.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">⌘</div>
+
+          <h3>Firebase Integration</h3>
+
+          <p>
+            Basic authentication, database and
+            web-app functionality using Firebase.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small-title">Selected Work</div>
+        <h2>Projects I've worked on.</h2>
+        <p>Some examples of my web development work.</p>
+      </div>
+
+
+      <div class="projects">
+
+        <div class="project">
+
+          <div class="project-tag">Gaming</div>
+
+          <div class="project-number">01 / PROJECT</div>
+
+          <h3>FFMPC Tournament</h3>
+
+          <p>
+            A gaming tournament platform with user
+            features, tournament pages and web-based
+            management functionality.
+          </p>
+
+        </div>
+
+
+        <div class="project">
+
+          <div class="project-tag">Web Design</div>
+
+          <div class="project-number">02 / PROJECT</div>
+
+          <h3>Business Website</h3>
+
+          <p>
+            A clean business website concept focused
+            on services, contact information and
+            mobile-friendly presentation.
+          </p>
+
+        </div>
+
+
+        <div class="project">
+
+          <div class="project-tag">Portfolio</div>
+
+          <div class="project-number">03 / PROJECT</div>
+
+          <h3>Personal Portfolio</h3>
+
+          <p>
+            This portfolio website, designed to present
+            my skills, services and development work.
+          </p>
+
+        </div>
+
+
+        <div class="project">
+
+          <div class="project-tag">Web App</div>
+
+          <div class="project-number">04 / PROJECT</div>
+
+          <h3>Firebase Web Project</h3>
+
+          <p>
+            Web application work using Firebase
+            authentication and database functionality.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRICING -->
+
+  <section id="pricing">
+
+    <div class="container">
+
+      <div class="section-head">
+
+        <div class="small-title">Pricing</div>
+
+        <h2>Simple starting prices.</h2>
+
+        <p>
+          Final price depends on the requirements of your project.
+        </p>
+
+      </div>
+
+
+      <div class="pricing">
+
+        <div class="price-card">
+
+          <h3>Starter</h3>
+
+          <div class="price">
+            ₹499
+            <small>/ starting</small>
+          </div>
+
+          <ul>
+            <li>✓ One-page website</li>
+            <li>✓ Responsive design</li>
+            <li>✓ Contact / WhatsApp button</li>
+            <li>✓ Basic customization</li>
+          </ul>
+
+          <a class="btn btn-secondary"
+             href="https://wa.me/919203570458?text=Hi%20Ashish%2C%20I%20am%20interested%20in%20your%20Starter%20website."
+             target="_blank">
+            Get Started
+          </a>
+
+        </div>
+
+
+        <div class="price-card featured">
+
+          <h3>Business</h3>
+
+          <div class="price">
+            ₹999
+            <small>/ starting</small>
+          </div>
+
+          <ul>
+            <li>✓ Multi-section website</li>
+            <li>✓ Mobile responsive</li>
+            <li>✓ WhatsApp integration</li>
+            <li>✓ Modern UI</li>
+            <li>✓ Basic SEO setup</li>
+          </ul>
+
+          <a class="btn btn-primary"
+             href="https://wa.me/919203570458?text=Hi%20Ashish%2C%20I%20am%20interested%20in%20your%20Business%20website."
+             target="_blank">
+            Choose Business
+          </a>
+
+        </div>
+
+
+        <div class="price-card">
+
+          <h3>Custom</h3>
+
+          <div class="price">
+            Let's Talk
+          </div>
+
+          <ul>
+            <li>✓ Custom design</li>
+            <li>✓ Web app features</li>
+            <li>✓ Firebase integration</li>
+            <li>✓ Website to APK</li>
+            <li>✓ Project-specific requirements</li>
+          </ul>
+
+          <a class="btn btn-secondary"
+             href="https://wa.me/919203570458?text=Hi%20Ashish%2C%20I%20have%20a%20custom%20website%20project."
+             target="_blank">
+            Discuss Project
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <div class="small-title">
+          Have a project?
+        </div>
+
+        <h2>
+          Let's build something<br>
+          <span style="color:#8f79ff;">useful together.</span>
+        </h2>
+
+        <p>
+          Tell me what you want to build and I'll get back
+          to you on WhatsApp.
+        </p>
+
+        <a class="btn btn-primary"
+           href="https://wa.me/919203570458?text=Hi%20Ashish%2C%20I%20have%20a%20website%20project%20for%20you."
+           target="_blank">
+          💬 Chat on WhatsApp
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+      © 2026 Ashish Vishwakarma
+    </div>
+
+    <div>
+      Web Developer • India
+    </div>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>
